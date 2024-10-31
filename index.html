@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- 1. react-doom이 element를 가져다 놓을 공간. -->
+        <div id="root"></div>
+    </body>
+    <!-- react : 엔진의 역할. interactive한 UI를 제작할 수 있도록 해 줌. -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <!-- react-dom : react element를 HTML에 두는 역할을 해 줌. -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script>
+        // 2. root div를 <body>에서 가져옴
+        const root = document.getElementById("root");
+
+        // 3. react를 통해 element들을 생성하고, 각각 h3, btn 변수에 할당
+        const h3 = React.createElement("h3", {
+            onMouseEnter: () => console.log("mouse enter"),
+        }, "Hello i am a h3");
+        
+        const btn = React.createElement("button", {
+            onClick: () => console.log("im clicked"),
+        }, "Click me");
+
+        // 4. container라는 변수에 h3, btn을 묶어줌
+        const container = React.createElement("div", null, [h3, btn]);
+        
+        // 5. ReactDom의 render를 이용 해 container를 <body>의 root div에 가져다 놓음. 
+        ReactDOM.render(container, root);
+    </script>
+</html>
